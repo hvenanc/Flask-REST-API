@@ -5,7 +5,7 @@ document.getElementById('cadastro').addEventListener('submit', function(event) {
     let codigo = Number(document.getElementById('codigo').value);
     const nome = document.getElementById('nome').value;
     const tarifa = Number(document.getElementById('tarifa').value);
-    const ar_condicionado = document.getElementById('ar').value
+    const ar_condicionado = Boolean(document.getElementById('ar').value)
 
 
     // Dados que serão enviados para a API Flask
@@ -39,5 +39,6 @@ document.getElementById('cadastro').addEventListener('submit', function(event) {
       .catch(error => {
         // Lidar com erros
         console.error('Erro:', error);
+        alert('Erro com o servidor')
       });
   });
