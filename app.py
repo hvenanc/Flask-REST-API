@@ -1,5 +1,6 @@
 from flask import Flask, render_template, make_response
 from flask_restful import Resource, Api, request
+from infra.repository.linha_repository import LinhaRepository
 import json
 
 app = Flask(__name__)
@@ -14,16 +15,22 @@ cod_linha = []
 for linha in linhas:
     cod_linha.append(linha['codigo'])
 
+linha = LinhaRepository()
+
 
 class Linha(Resource):
 
+    # def get(self, codigo):
+    #     if codigo in cod_linha:
+    #         pos = cod_linha.index(codigo)
+    #         response = linhas[pos]
+    #         return response
+    #     else:
+    #         return {'Status': 'Linha não cadastrada!'}
+
     def get(self, codigo):
-        if codigo in cod_linha:
-            pos = cod_linha.index(codigo)
-            response = linhas[pos]
-            return response
-        else:
-            return {'Status': 'Linha não cadastrada!'}
+        response = linha.select_codigo(codigo)
+        return response
 
     def delete(self, codigo):
         if codigo in cod_linha:
