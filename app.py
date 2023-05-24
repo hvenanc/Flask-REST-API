@@ -55,9 +55,9 @@ class Cadastro_Linha(Resource):
 
     def post(self):
         dados = json.loads(request.data)
-        cod_linha.append(dados['codigo'])
-        linhas.append(dados)
+        linha.insert(dados['codigo'],dados['nome'],dados['tarifa'],dados['ar_condicionado'],dados['integracao'])
         return {'Status': 'Linha cadastrada com sucesso!'}
+
 
     def get(self):
         return linhas

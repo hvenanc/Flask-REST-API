@@ -5,7 +5,8 @@ document.getElementById('cadastro').addEventListener('submit', function(event) {
     let codigo = Number(document.getElementById('codigo').value);
     const nome = document.getElementById('nome').value;
     const tarifa = Number(document.getElementById('tarifa').value);
-    const ar_condicionado = Boolean(document.getElementById('ar').value)
+    const ar_condicionado = document.getElementById('ar').value
+    const integracao = document.getElementById('integracao').value
 
 
     // Dados que serão enviados para a API Flask
@@ -13,7 +14,8 @@ document.getElementById('cadastro').addEventListener('submit', function(event) {
         codigo: codigo,
         nome: nome,
         tarifa: tarifa,
-        ar_condicionado: ar_condicionado
+        ar_condicionado: ar_condicionado,
+        integracao: integracao
     };
 
     // Opções da solicitação POST
@@ -34,7 +36,7 @@ document.getElementById('cadastro').addEventListener('submit', function(event) {
       .then(data => {
         // Manipular a resposta da API21
         console.log(data);
-        alert('Usuário Cadastrado')
+        alert('Linha Cadastrada')
       })
       .catch(error => {
         // Lidar com erros
